@@ -1,2 +1,6 @@
 server:
-  port: 8080
+  port: 8081 # 由于8080端口被占用，临时修改为8081
+  
+spring:
+  application:
+    name: px_work-api
