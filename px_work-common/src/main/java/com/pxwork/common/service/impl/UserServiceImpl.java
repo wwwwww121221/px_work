@@ -1,10 +1,17 @@
 package com.pxwork.common.service.impl;
 
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import cn.dev33.satoken.secure.SaSecureUtil;
-import cn.dev33.satoken.stp.StpUtil;
 import com.pxwork.common.entity.Department;
 import com.pxwork.common.entity.User;
 import com.pxwork.common.entity.UserDepartment;
@@ -13,14 +20,9 @@ import com.pxwork.common.request.FrontendLoginRequest;
 import com.pxwork.common.service.DepartmentService;
 import com.pxwork.common.service.UserDepartmentService;
 import com.pxwork.common.service.UserService;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import com.pxwork.common.utils.StpUserUtil;
 
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import cn.dev33.satoken.secure.SaSecureUtil;
 
 /**
  * <p>
@@ -131,8 +133,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         if (!password.equals(user.getPassword())) {
             throw new RuntimeException("账号或密码错误");
         }
-        StpUtil.login(user.getId(), "Frontend");
-        return StpUtil.getTokenValue();
+        StpUserUtil.login(user.getId());
+        return StpUserUtil.getTokenValue();
     }
 
     private void saveDepartments(Long userId, List<Long> departmentIds) {

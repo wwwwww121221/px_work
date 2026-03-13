@@ -1,12 +1,8 @@
 package com.pxwork.api.controller.backend;
 
-import cn.dev33.satoken.stp.StpUtil;
-import com.pxwork.common.request.BackendLoginRequest;
-import com.pxwork.common.utils.Result;
-import com.pxwork.system.entity.AdminUser;
-import com.pxwork.system.service.AdminUserService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,8 +11,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.pxwork.common.request.BackendLoginRequest;
+import com.pxwork.common.utils.Result;
+import com.pxwork.system.entity.AdminUser;
+import com.pxwork.system.service.AdminUserService;
+
+import cn.dev33.satoken.stp.StpUtil;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 @Tag(name = "后台登录管理")
 @RestController
@@ -29,11 +31,17 @@ public class BackendLoginController {
     @Operation(summary = "后台管理员登录")
     @PostMapping("/login")
     public Result<Map<String, Object>> login(@RequestBody @Validated BackendLoginRequest loginRequest) {
-        String token = adminUserService.login(loginRequest);
-        Map<String, Object> tokenInfo = new HashMap<>();
-        tokenInfo.put("tokenName", StpUtil.getTokenName());
-        tokenInfo.put("tokenValue", token);
-        return Result.success(tokenInfo);
+        try {
+            String token = adminUserService.login(loginRequest);
+            Map<String, Object> tokenInfo = new HashMap<>();
+            tokenInfo.put("tokenName", StpUtil.getTokenName());
+            tokenInfo.put("tokenValue", token);
+            return Result.success(tokenInfo);
+        } catch (RuntimeException e) {
+            return Result.fail(e.getMessage());
+        } catch (Exception e) {
+            return Result.fail("登录失败，请稍后重试");
+        }
     }
 
     @Operation(summary = "获取当前管理员信息")
