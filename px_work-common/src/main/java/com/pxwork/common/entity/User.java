@@ -42,6 +42,26 @@ public class User implements Serializable {
     private String avatar;
 
     /**
+     * 身份证号(登录账号)
+     */
+    private String idCard;
+
+    /**
+     * 所属企业
+     */
+    private String enterprise;
+
+    /**
+     * 岗位(关联字典表value)
+     */
+    private String jobRole;
+
+    /**
+     * 所属行业(关联字典表value)
+     */
+    private String industry;
+
+    /**
      * 邮箱(登录账号)
      */
     private String email;
@@ -50,6 +70,11 @@ public class User implements Serializable {
      * 密码
      */
     private String password;
+
+    /**
+     * 是否首次登录 1:是 0:否
+     */
+    private Integer isFirstLogin;
 
     private LocalDateTime createdAt;
 

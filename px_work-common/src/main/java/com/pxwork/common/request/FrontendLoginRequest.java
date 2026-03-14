@@ -6,9 +6,9 @@ import lombok.Data;
 @Data
 public class FrontendLoginRequest {
 
-    @NotBlank(message = "邮箱/密码不能为空")
-    private String email;
+    @NotBlank(message = "身份证号不能为空")
+    private String idCard;
 
-    @NotBlank(message = "邮箱/密码不能为空")
+    @NotBlank(message = "密码不能为空")
     private String password;
 }

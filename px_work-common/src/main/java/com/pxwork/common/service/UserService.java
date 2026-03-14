@@ -1,9 +1,11 @@
 package com.pxwork.common.service;
 
+import java.util.Map;
+
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.pxwork.common.entity.User;
 import com.pxwork.common.request.FrontendLoginRequest;
-import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>
@@ -21,5 +23,5 @@ public interface UserService extends IService<User> {
     
     Page<User> pageWithDepts(Page<User> page, String name);
 
-    String login(FrontendLoginRequest request);
+    Map<String, Object> login(FrontendLoginRequest request);
 }

@@ -1,5 +1,6 @@
 package com.pxwork.common.service.impl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -123,9 +124,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     }
 
     @Override
-    public String login(FrontendLoginRequest request) {
+    public Map<String, Object> login(FrontendLoginRequest request) {
         User user = this.getOne(new LambdaQueryWrapper<User>()
-                .eq(User::getEmail, request.getEmail()));
+                .eq(User::getIdCard, request.getIdCard()));
         if (user == null) {
             throw new RuntimeException("账号或密码错误");
         }
@@ -134,7 +135,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
             throw new RuntimeException("账号或密码错误");
         }
         StpUserUtil.login(user.getId());
-        return StpUserUtil.getTokenValue();
+        Map<String, Object> loginInfo = new HashMap<>();
+        loginInfo.put("token", StpUserUtil.getTokenValue());
+        loginInfo.put("isFirstLogin", user.getIsFirstLogin());
+        return loginInfo;
     }
 
     private void saveDepartments(Long userId, List<Long> departmentIds) {
