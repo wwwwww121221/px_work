@@ -31,6 +31,8 @@ public class Course implements Serializable {
      */
     private String name;
 
+    private String title;
+
     /**
      * 封面图
      */

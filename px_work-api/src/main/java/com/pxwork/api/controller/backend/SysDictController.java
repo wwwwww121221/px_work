@@ -39,14 +39,14 @@ public class SysDictController {
     }
 
     @Operation(summary = "修改字典项")
-    @PostMapping("/update")
+    @PutMapping("/update")
     public Result<Boolean> update(@RequestBody SysDict sysDict) {
         boolean success = sysDictService.updateById(sysDict);
         return success ? Result.success(true) : Result.fail("更新失败");
     }
 
     @Operation(summary = "删除字典项")
-    @PostMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public Result<Boolean> delete(@PathVariable Long id) {
         boolean success = sysDictService.removeById(id);
         return success ? Result.success(true) : Result.fail("删除失败");

@@ -2,9 +2,11 @@ package com.pxwork.api.controller.backend;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -60,14 +62,14 @@ public class AdminRoleController {
     }
 
     @Operation(summary = "修改角色", description = "更新角色信息")
-    @PostMapping("/update")
+    @PutMapping("/update")
     public Result<Boolean> update(@RequestBody AdminRole adminRole) {
         boolean success = adminRoleService.updateById(adminRole);
         return success ? Result.success(true) : Result.fail("更新失败");
     }
 
     @Operation(summary = "删除角色", description = "根据ID删除角色")
-    @PostMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public Result<Boolean> delete(@PathVariable Long id) {
         boolean success = adminRoleService.removeById(id);
         return success ? Result.success(true) : Result.fail("删除失败");
