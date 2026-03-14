@@ -11,6 +11,7 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,7 +32,7 @@ public class BackendEvaluationController {
     private ProcessEvaluationService processEvaluationService;
 
     @Operation(summary = "讲师评分")
-    @PostMapping("/score")
+    @PutMapping("/score")
     public Result<Map<String, Object>> score(@RequestBody @Validated ScoreRequest request) {
         if (!isValidDimensionScore(request.getScoreProgress())
                 || !isValidDimensionScore(request.getScorePrep())

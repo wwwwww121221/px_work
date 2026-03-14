@@ -36,7 +36,7 @@ public class FrontendProgressController {
     private CourseHourService courseHourService;
 
     @Operation(summary = "上报学习进度")
-    @PostMapping("/report")
+    @PutMapping("/report")
     public Result<Map<String, Object>> report(@RequestBody @Validated ProgressReportRequest request) {
         long userId = StpUserUtil.getLoginIdAsLong();
         long resourceId = request.getResourceId() == null ? request.getHourId() : request.getResourceId();

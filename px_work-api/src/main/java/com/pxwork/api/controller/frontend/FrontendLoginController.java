@@ -6,8 +6,10 @@ import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -49,7 +51,7 @@ public class FrontendLoginController {
     }
 
     @Operation(summary = "学员注销登录")
-    @PostMapping("/logout")
+    @DeleteMapping("/logout")
     public Result<String> logout() {
         StpUserUtil.logout();
         return Result.success("注销成功");
@@ -67,7 +69,7 @@ public class FrontendLoginController {
     }
 
     @Operation(summary = "首次登录修改密码")
-    @PostMapping("/user/update-password")
+    @PutMapping("/user/update-password")
     public Result<Boolean> updatePassword(@RequestBody @Validated UpdatePasswordRequest request) {
         long userId = StpUserUtil.getLoginIdAsLong();
         User user = userService.getById(userId);
