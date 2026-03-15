@@ -1,5 +1,19 @@
 package com.pxwork.api.controller.frontend;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.pxwork.common.entity.User;
 import com.pxwork.common.service.UserService;
@@ -9,23 +23,11 @@ import com.pxwork.course.entity.Course;
 import com.pxwork.course.entity.UserCourseEnrollment;
 import com.pxwork.course.service.CourseService;
 import com.pxwork.course.service.UserCourseEnrollmentService;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
-
-@Tag(name = "前台学习看板")
+@Tag(name = "4.1 前台-学习看板")
 @RestController
 @RequestMapping("/frontend/dashboard")
 public class FrontendDashboardController {

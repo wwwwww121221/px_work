@@ -1,16 +1,8 @@
 package com.pxwork.api.controller.frontend;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.pxwork.common.utils.Result;
-import com.pxwork.common.utils.StpUserUtil;
-import com.pxwork.course.entity.Certificate;
-import com.pxwork.course.entity.CertificateRequest;
-import com.pxwork.course.service.CertificateRequestService;
-import com.pxwork.course.service.CertificateService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.constraints.NotBlank;
-import lombok.Data;
+import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,10 +12,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDate;
-import java.util.List;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.pxwork.common.utils.Result;
+import com.pxwork.common.utils.StpUserUtil;
+import com.pxwork.course.entity.Certificate;
+import com.pxwork.course.entity.CertificateRequest;
+import com.pxwork.course.service.CertificateRequestService;
+import com.pxwork.course.service.CertificateService;
 
-@Tag(name = "前台证书")
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
+
+@Tag(name = "4.7 前台-证书与公示")
 @RestController
 @RequestMapping("/frontend/certificates")
 public class FrontendCertificateController {

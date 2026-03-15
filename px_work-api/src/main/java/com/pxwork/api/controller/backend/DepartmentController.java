@@ -3,8 +3,8 @@ package com.pxwork.api.controller.backend;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -30,7 +30,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
  * @author TraeAI
  * @since 2026-03-13
  */
-@Tag(name = "部门管理", description = "部门相关的接口")
+@Tag(name = "1.3 后台-部门组织管理")
 @RestController
 @RequestMapping("/department")
 public class DepartmentController {

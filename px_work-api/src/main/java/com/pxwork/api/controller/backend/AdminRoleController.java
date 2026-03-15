@@ -29,7 +29,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
  * @author TraeAI
  * @since 2026-03-13
  */
-@Tag(name = "后台角色管理", description = "角色相关的接口")
+@Tag(name = "1.2 后台-角色权限管理")
 @RestController
 @RequestMapping("/admin-role")
 public class AdminRoleController {

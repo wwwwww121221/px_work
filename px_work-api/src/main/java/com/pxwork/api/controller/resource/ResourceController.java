@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
  * @author TraeAI
  * @since 2026-03-13
  */
-@Tag(name = "资源库管理", description = "资源库相关的接口")
+@Tag(name = "2.5 后台-素材资源管理")
 @RestController
 @RequestMapping("/resource")
 public class ResourceController {

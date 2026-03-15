@@ -23,7 +23,7 @@ import com.pxwork.course.service.CourseService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-@Tag(name = "课程分类管理")
+@Tag(name = "2.2 后台-课程分类管理")
 @RestController
 @RequestMapping("/course/category")
 public class CourseCategoryController {

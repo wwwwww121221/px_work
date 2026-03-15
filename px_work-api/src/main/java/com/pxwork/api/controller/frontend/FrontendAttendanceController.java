@@ -1,16 +1,8 @@
 package com.pxwork.api.controller.frontend;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.pxwork.common.utils.Result;
-import com.pxwork.common.utils.StpUserUtil;
-import com.pxwork.course.entity.Course;
-import com.pxwork.course.entity.OfflineAttendance;
-import com.pxwork.course.service.CourseService;
-import com.pxwork.course.service.OfflineAttendanceService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.constraints.NotNull;
-import lombok.Data;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,10 +10,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.pxwork.common.utils.Result;
+import com.pxwork.common.utils.StpUserUtil;
+import com.pxwork.course.entity.Course;
+import com.pxwork.course.entity.OfflineAttendance;
+import com.pxwork.course.service.CourseService;
+import com.pxwork.course.service.OfflineAttendanceService;
 
-@Tag(name = "前台线下打卡")
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
+
+@Tag(name = "4.5 前台-线下打卡")
 @RestController
 @RequestMapping("/frontend/attendance")
 public class FrontendAttendanceController {

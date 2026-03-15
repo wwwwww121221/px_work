@@ -31,7 +31,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
  * @author TraeAI
  * @since 2026-03-13
  */
-@Tag(name = "后台课程管理", description = "后台课程相关的接口")
+@Tag(name = "2.1 后台-课程建设管理")
 @RestController
 @RequestMapping("/backend/course")
 public class BackendCourseController {

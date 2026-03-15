@@ -1,16 +1,5 @@
 package com.pxwork.api.controller.backend;
 
-import com.pxwork.common.utils.Result;
-import com.pxwork.course.entity.AssignmentSubmission;
-import com.pxwork.course.entity.Course;
-import com.pxwork.course.entity.CourseAssignment;
-import com.pxwork.course.service.AssignmentSubmissionService;
-import com.pxwork.course.service.CourseAssignmentService;
-import com.pxwork.course.service.CourseService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.constraints.NotNull;
-import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +8,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Tag(name = "后台作业管理")
+import com.pxwork.common.utils.Result;
+import com.pxwork.course.entity.AssignmentSubmission;
+import com.pxwork.course.entity.Course;
+import com.pxwork.course.entity.CourseAssignment;
+import com.pxwork.course.service.AssignmentSubmissionService;
+import com.pxwork.course.service.CourseAssignmentService;
+import com.pxwork.course.service.CourseService;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
+
+@Tag(name = "3.1 后台-作业管理")
 @RestController
 @RequestMapping("/backend/assignment")
 public class BackendAssignmentController {

@@ -1,15 +1,25 @@
 package com.pxwork.api.controller.backend;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.pxwork.system.entity.AdminUser;
-import com.pxwork.system.service.AdminUserService;
-import com.pxwork.common.utils.Result;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.pxwork.common.utils.Result;
+import com.pxwork.system.entity.AdminUser;
+import com.pxwork.system.service.AdminUserService;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 /**
  * <p>
@@ -19,7 +29,7 @@ import org.springframework.web.bind.annotation.*;
  * @author TraeAI
  * @since 2026-03-12
  */
-@Tag(name = "后台管理员管理", description = "后台管理员相关的接口")
+@Tag(name = "1.1 后台-管理员管理")
 @RestController
 @RequestMapping("/admin-user")
 public class AdminUserController {

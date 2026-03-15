@@ -19,14 +19,14 @@ import com.pxwork.common.request.FrontendLoginRequest;
 import com.pxwork.common.service.UserService;
 import com.pxwork.common.utils.Result;
 import com.pxwork.common.utils.StpUserUtil;
+
 import cn.dev33.satoken.secure.SaSecureUtil;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
-
-@Tag(name = "前台学员登录")
+@Tag(name = "4.0 前台-学员登录认证")
 @RestController
 @RequestMapping("/frontend")
 public class FrontendLoginController {

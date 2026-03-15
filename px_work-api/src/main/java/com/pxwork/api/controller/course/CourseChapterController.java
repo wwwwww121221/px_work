@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Tag(name = "课程章节管理")
+@Tag(name = "2.3 后台-课程章节管理")
 @RestController
 @RequestMapping("/course/chapter")
 public class CourseChapterController {

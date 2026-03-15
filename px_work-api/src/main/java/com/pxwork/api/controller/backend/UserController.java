@@ -8,8 +8,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -41,7 +41,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
  * @author TraeAI
  * @since 2026-03-13
  */
-@Tag(name = "学员管理", description = "学员相关的接口")
+@Tag(name = "1.5 后台-学员信息管理")
 @RestController
 @RequestMapping("/backend/user")
 public class UserController {

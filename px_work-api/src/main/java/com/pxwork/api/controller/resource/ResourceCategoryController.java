@@ -1,14 +1,23 @@
 package com.pxwork.api.controller.resource;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.pxwork.common.utils.Result;
 import com.pxwork.resource.entity.ResourceCategory;
 import com.pxwork.resource.service.ResourceCategoryService;
+
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 /**
  * <p>
@@ -18,7 +27,7 @@ import java.util.List;
  * @author TraeAI
  * @since 2026-03-13
  */
-@Tag(name = "资源分类管理", description = "资源分类相关的接口")
+@Tag(name = "2.5 后台-素材资源管理")
 @RestController
 @RequestMapping("/resource-category")
 public class ResourceCategoryController {

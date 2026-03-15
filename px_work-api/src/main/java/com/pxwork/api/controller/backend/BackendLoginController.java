@@ -21,7 +21,7 @@ import cn.dev33.satoken.stp.StpUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
-@Tag(name = "后台登录管理")
+@Tag(name = "1.0 后台-登录与认证")
 @RestController
 @RequestMapping("/backend")
 public class BackendLoginController {

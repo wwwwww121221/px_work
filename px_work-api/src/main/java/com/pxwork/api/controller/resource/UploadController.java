@@ -1,12 +1,9 @@
 package com.pxwork.api.controller.resource;
 
-import com.pxwork.common.utils.Result;
-import com.pxwork.resource.entity.Resource;
-import com.pxwork.resource.service.ResourceService;
-import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.servlet.http.HttpServletRequest;
-import lombok.extern.slf4j.Slf4j;
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,9 +12,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.UUID;
+import com.pxwork.common.utils.Result;
+import com.pxwork.resource.entity.Resource;
+import com.pxwork.resource.service.ResourceService;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * <p>
@@ -28,7 +30,7 @@ import java.util.UUID;
  * @since 2026-03-13
  */
 @Slf4j
-@Tag(name = "文件上传", description = "文件上传接口")
+@Tag(name = "2.5 后台-素材资源管理")
 @RestController
 @RequestMapping("/upload")
 public class UploadController {
