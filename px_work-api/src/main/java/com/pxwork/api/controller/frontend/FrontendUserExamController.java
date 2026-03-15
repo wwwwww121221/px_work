@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.pxwork.common.service.ai.DifyApiService;
 import com.pxwork.common.utils.Result;
 import com.pxwork.common.utils.StpUserUtil;
 import com.pxwork.course.entity.Exam;
@@ -40,8 +41,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 
 @Tag(name = "4.6 前台-考试作答")
+@Slf4j
 @RestController
 @RequestMapping("/frontend/user-exams")
 public class FrontendUserExamController {
@@ -63,6 +66,9 @@ public class FrontendUserExamController {
 
     @Autowired
     private UserExamAnswerService userExamAnswerService;
+
+    @Autowired
+    private DifyApiService difyApiService;
 
     @Operation(summary = "开始考试")
     @PostMapping
@@ -181,12 +187,18 @@ public class FrontendUserExamController {
                     objectiveScore = objectiveScore.add(questionScore);
                 }
             } else {
+                Map<String, Object> aiResult = difyApiService.gradeSubjectiveAnswer(
+                        question.getContent(),
+                        question.getStandardAnswer(),
+                        answer.getUserAnswer());
+                log.info("ai grade result questionId={}, result={}", answer.getQuestionId(), aiResult);
                 UserExamAnswer subjectiveAnswer = new UserExamAnswer();
                 subjectiveAnswer.setUserExamId(userExam.getId());
                 subjectiveAnswer.setQuestionId(answer.getQuestionId());
                 subjectiveAnswer.setUserAnswer(answer.getUserAnswer());
                 subjectiveAnswer.setIsCorrect(null);
-                subjectiveAnswer.setScore(BigDecimal.ZERO);
+                subjectiveAnswer.setScore(parseScore(aiResult.get("score")));
+                subjectiveAnswer.setAiComment(aiResult.get("comment") == null ? null : String.valueOf(aiResult.get("comment")));
                 subjectiveAnswers.add(subjectiveAnswer);
             }
         }
@@ -204,6 +216,17 @@ public class FrontendUserExamController {
         result.put("objectiveScore", objectiveScore);
         result.put("subjectiveCount", subjectiveAnswers.size());
         return Result.success(result);
+    }
+
+    private BigDecimal parseScore(Object scoreObj) {
+        if (scoreObj == null) {
+            return BigDecimal.ZERO;
+        }
+        try {
+            return new BigDecimal(String.valueOf(scoreObj));
+        } catch (Exception e) {
+            return BigDecimal.ZERO;
+        }
     }
 
     @Data
